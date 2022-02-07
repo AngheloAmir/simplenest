@@ -1,17 +1,16 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ItemsController } from './items/items.controller';
-import { ItemsService } from './items/items.service';
+//import { ItemsController } from './items/items.controller';
+//import { ItemsService } from './items/items.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ItemsModule } from './items/items.module'
+import { MongoDBAccessKey } from './env/keys';
 
 @Module({
   imports: [
     ItemsModule,
-    MongooseModule.forRoot(
-      "mongodb+srv://galaDevAdmin:OwOGalaDevAdmin17@clusterdev.ur7or.mongodb.net/mydatabase?retryWrites=true&w=majority"
-    )
+    MongooseModule.forRoot( MongoDBAccessKey )
   ],
   controllers: [
     AppController,
